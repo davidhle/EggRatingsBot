@@ -21,7 +21,7 @@ var stream = T.stream('user');
 // Define the ID of the user we are interested in
 //460554621 my personal user id for testing/debugging
 //25073877 Trump's user id
-var userID = 460554621;
+var userID = 25073877;
 
 
 // Open a stream following events from that user ID
