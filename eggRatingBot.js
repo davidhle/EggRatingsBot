@@ -57,7 +57,7 @@ console.log("Stream for checking tweets from @realDonaldTrump is on!");
             var rating = eggRating(tweet);
             var url = eggURL(rating);
             console.log(rating + " " + url);
-            uploadEggImage(url, tweet.created_at, rating);
+            uploadEggImage(url, tweet, rating);
 		}
 	});
 
@@ -69,11 +69,11 @@ function tweeted(err, data, response) {
     }
 }
 
-function uploadEggImage(url, time, rating) {
+function uploadEggImage(url, tweet, rating) {
     console.log('Uploading an image...');
     //images must be base64 encoded
     b64content = fs.readFileSync(url, {encoding: 'base64'});
-    T.post('media/upload', { media_data: b64content }, function (err, data, response) {
+    T.post('media/upload', { media_data: b64content}, function (err, data, response) {
       if (err){
         console.log('ERROR:');
         console.log(err);
@@ -81,10 +81,11 @@ function uploadEggImage(url, time, rating) {
       else{
         console.log('Image uploaded!');
         console.log('Now tweeting it...');
-
+        console.log(tweet.id_str);
         T.post('statuses/update', {
-          status: 'Trump\'s tweet on ' + time + " has an egg rating of: " + rating,
-          media_ids: new Array(data.media_id_string)
+            in_reply_to_status_id_str: tweet.id_str,
+            status: tweet.text,
+            media_ids: new Array(data.media_id_string),
         },
           function(err, data, response) {
             if (err){
