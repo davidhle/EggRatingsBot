@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node eggRatingBot.js"
+    "start": "node eggRatingBot.js"
   },
   "repository": {
     "type": "git",
