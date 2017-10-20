@@ -24,8 +24,7 @@
   "bugs": {
     "url": "https://github.com/davidhle/TwitterBot/issues"
   },
-  "homepage": "https://github.com/davidhle/TwitterBot#readme"
-  ,
+  "homepage": "https://github.com/davidhle/TwitterBot#readme",
   "engines": {
     "node": "6.9.1"
   }
