@@ -1,15 +1,35 @@
 /*
 David Le
 LMC 2700
+Project 3
+
+Link to Twitter Account: https://twitter.com/TrumpEggRatings
+My bot checks for incoming tweets from @realDonaldTrump and gives that tweet
+an "Egg Rating" which is dependent on things such as using caps, exclamatinon
+points, or question marks, mentioning Clinton or ObamaCare, or saying things
+like "fake" or "lie/lies" and posts a picture of that certain egg based off
+of its egg rating.
+
+My purpose in creating this bot is to mimick/simulate those types of people
+who start to use a new phrase (maybe they invented it themselves) or saying
+to describe someone or something. In this case, it's something that I would
+not be surprised if I started doing, because I really like eggs. My main
+purpose for this bot was for it to be entertaining and nonsensical.
+
+For example of people who invent a new type of slang:
+"Trump is being really hard boiled on twitter lately"
+"Have you seen Trump's latest tweet? It is SO scrambled!"
 
 Rating Intervals
-Raw:0-99
-Soft Boiled: 100-199
-Over Easy: 200-299
-Hard Boiled: 300-399
-Fried: 400-499
-Scrambled: 500+
+Raw:0-199
+Soft Boiled: 200-399
+Over Easy: 400-599
+Hard Boiled: 600-799
+Fried: 800-999
+Scrambled: 1000+
+
 */
+
 // Twitter Library and File System
 var Twit = require('twit'),
     fs = require('fs');
@@ -51,6 +71,7 @@ function tweeted(err, data, response) {
 
 function uploadEggImage(url, time, rating) {
     console.log('Uploading an image...');
+    //images must be base64 encoded
     b64content = fs.readFileSync(url, {encoding: 'base64'});
     T.post('media/upload', { media_data: b64content }, function (err, data, response) {
       if (err){
@@ -81,17 +102,17 @@ function uploadEggImage(url, time, rating) {
 
 function eggURL(rating) {
     var url = "./images/"
-    if(rating >= 0 && rating < 100) { // Raw
+    if(rating >= 0 && rating < 200) { // Raw
         url += "Raw.jpg";
-    } else if (rating >= 100 && rating < 200) { // Soft Boiled
+    } else if (rating >= 200 && rating < 400) { // Soft Boiled
         url += "SoftBoiled.jpg";
-    } else if (rating >= 200 && rating < 300) { // Over Easy
+    } else if (rating >= 400 && rating < 600) { // Over Easy
         url += "OverEasy.jpg";
-    } else if (rating >= 300 && rating < 400) { // Hard Boiled
+    } else if (rating >= 600 && rating < 800) { // Hard Boiled
         url += "HardBoiled.jpg";
-    } else if (rating >= 400 && rating < 500) { // Fried
+    } else if (rating >= 800 && rating < 1000) { // Fried
         url += "Fried.jpg";
-    } else if (rating >= 500) { // Scrambled
+    } else if (rating >= 1000) { // Scrambled
         url += "Scrambled.jpg";
     }
     return url;
@@ -99,10 +120,10 @@ function eggURL(rating) {
 
 function eggRating(tweet) {
     var tweetStr = tweet.text;
-    var words = tweetStr.split(/\s*\b\s*/);
+    var words = tweetStr.split(/\s*\b\s*/); // Separates words and other special characters
     console.log(words);
     var rating = 0;
-    rating += words.length * 5; // More words = more cooked up!
+    rating += words.length * 2; // More words = more cooked up!
     for (var i = 0; i < words.length; i++) {
         if (words[i] == "!" || words[i] == "?") {
             rating += 50;
