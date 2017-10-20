@@ -1,0 +1,32 @@
+{
+  "name": "egg-rating-bot",
+  "version": "1.0.0",
+  "description": "Twitter bot that checks @realDonaldTrump's tweets and gives it a rating and matches it to a type of cooked egg",
+  "main": "config.js",
+  "dependencies": {
+    "twit": "^2.2.9",
+    "wordnik": "^0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node eggRatingBot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhle/TwitterBot.git"
+  },
+  "keywords": [
+    "twitter",
+    "heroku"
+  ],
+  "author": "David Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhle/TwitterBot/issues"
+  },
+  "homepage": "https://github.com/davidhle/TwitterBot#readme"
+  ,
+  "engines": {
+    "node": "6.9.1"
+  },
+}
