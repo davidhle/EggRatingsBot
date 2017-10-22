@@ -17,12 +17,3 @@ purpose for this bot was for it to be entertaining and nonsensical.
 For example of people who invent a new type of slang:
 "Trump is being really hard boiled on twitter lately"
 "Have you seen Trump's latest tweet? It is SO scrambled!"
-
-## Rating Intervals
-
-* Raw:0-199
-* Soft Boiled: 200-399
-* Over Easy: 400-599
-* Hard Boiled: 600-799
-* Fried: 800-999
-* Scrambled: 1000+

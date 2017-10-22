@@ -1,35 +1,3 @@
-/*
-David Le
-LMC 2700
-Project 3
-
-Link to Twitter Account: https://twitter.com/TrumpEggRatings
-My bot checks for incoming tweets from @realDonaldTrump and gives that tweet
-an "Egg Rating" which is dependent on things such as using caps, exclamatinon
-points, or question marks, mentioning Clinton or ObamaCare, or saying things
-like "fake" or "lie/lies" and posts a picture of that certain egg based off
-of its egg rating.
-
-My purpose in creating this bot is to mimick/simulate those types of people
-who start to use a new phrase (maybe they invented it themselves) or saying
-to describe someone or something. In this case, it's something that I would
-not be surprised if I started doing, because I really like eggs. My main
-purpose for this bot was for it to be entertaining and nonsensical.
-
-For example of people who invent a new type of slang:
-"Trump is being really hard boiled on twitter lately"
-"Have you seen Trump's latest tweet? It is SO scrambled!"
-
-Rating Intervals
-Raw:0-199
-Soft Boiled: 200-399
-Over Easy: 400-599
-Hard Boiled: 600-799
-Fried: 800-999
-Scrambled: 1000+
-
-*/
-
 // Twitter Library and File System
 var Twit = require('twit'),
     fs = require('fs');
@@ -103,17 +71,17 @@ function uploadEggImage(url, tweet, rating) {
 
 function eggURL(rating) {
     var url = "./images/"
-    if(rating >= 0 && rating < 200) { // Raw
+    if(rating >= 0 && rating < 350) { // Raw
         url += "Raw.jpg";
-    } else if (rating >= 200 && rating < 400) { // Soft Boiled
+    } else if (rating >= 350 && rating < 550) { // Soft Boiled
         url += "SoftBoiled.jpg";
-    } else if (rating >= 400 && rating < 600) { // Over Easy
+    } else if (rating >= 550 && rating < 750) { // Over Easy
         url += "OverEasy.jpg";
-    } else if (rating >= 600 && rating < 800) { // Hard Boiled
+    } else if (rating >= 750 && rating < 950) { // Hard Boiled
         url += "HardBoiled.jpg";
-    } else if (rating >= 800 && rating < 1000) { // Fried
+    } else if (rating >= 950 && rating < 1150) { // Fried
         url += "Fried.jpg";
-    } else if (rating >= 1000) { // Scrambled
+    } else if (rating >= 1150) { // Scrambled
         url += "Scrambled.jpg";
     }
     return url;
