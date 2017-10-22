@@ -99,11 +99,13 @@ function eggRating(tweet) {
         } else if (words[i].toUpperCase() === "FAKE") {
             rating += 100;
         } else if (words[i] === words[i].toUpperCase()) { // uses all caps word
-            rating += 150;
+            rating += 100;
         } else if (words[i].toUpperCase() === "LIE" || words[i].toUpperCase() === "LIES") {
             rating += 50;
         } else if (words[i].toUpperCase() === "CLINTON" || words[i].toUpperCase() === "OBAMACARE") {
-            rating += 125;
+            rating += 100;
+        } else if (words[i].toUpperCase() === "CROOKED" || words[i].toUpperCase() === "WACKY") {
+            rating += 50;
         }
     }
     return rating;
